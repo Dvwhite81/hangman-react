@@ -1,0 +1,31 @@
+#setup-container {
+  display: flex;
+  flex-direction: column;
+  height: 50vh;
+  justify-content: space-evenly;
+  margin: 10vh auto;
+  text-align: center;
+  width: 50vw;
+}
+
+#setup-input {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#number-input,
+#number-submit {
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 5px 10px;
+  text-align: center;
+  width: fit-content;
+}
+
+#number-submit:hover {
+  background-color: black;
+  color: white;
+}

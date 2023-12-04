@@ -1,1 +1,1 @@
-# battleship-react
+# hangman-react

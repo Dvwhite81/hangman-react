@@ -1,0 +1,10 @@
+#hangman-container {
+  display: flex;
+  flex-direction: column;
+  font-size: xx-large;
+  height: 100%;
+  justify-content: space-around;
+  margin: auto;
+  text-align: center;
+  width: 100%;
+}
