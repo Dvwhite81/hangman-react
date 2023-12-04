@@ -1,33 +1,47 @@
 import { useState } from 'react';
+import {
+  three,
+  four,
+  five,
+  six,
+  seven,
+  eight,
+} from '../../assets/words/words';
 import './Setup.css';
 
 function Setup({ setWord, setTimeLeft, setGameIsStarted }) {
   const [length, setLength] = useState(null);
 
-  const handleClick = () => {
-    let word;
+  const getRandomWord = () => {
+    let words;
     switch (length) {
       case 3:
-        word = 'CAT';
+        words = three;
         break;
       case 4:
-        word = 'TREE';
+        words = four;
         break;
       case 5:
-        word = 'HOUSE';
+        words = five;
         break;
       case 6:
-        word = 'YELLOW';
+        words = six;
         break;
       case 7:
-        word = 'HANGMAN';
+        words = seven;
         break;
       case 8:
-        word = 'AAAAAAAA';
+        words = eight;
         break;
       default:
         break;
     }
+    const random = Math.floor(Math.random() * words.length);
+    return words[random];
+  };
+
+  const handleClick = () => {
+    const word = getRandomWord(length);
     setWord(word);
     const time = length * 60;
     setTimeLeft(time);

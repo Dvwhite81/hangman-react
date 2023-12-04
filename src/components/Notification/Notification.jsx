@@ -8,13 +8,16 @@ function Notification({ gameIsOver, wonGame, gameWord, resetGame }) {
       <div id="modal-content">
         {!wonGame ? (
           <>
-            <h3>You Lost!</h3>
-            <p>The word was {gameWord}</p>
+            <h2>You Lost!</h2>
+            <h3>The word was {gameWord}</h3>
           </>
         ) : (
-          <h3>You Won!</h3>
+          <>
+            <h2>You Won!</h2>
+            <h3>The word was {gameWord}</h3>
+          </>
         )}
-        <h3>Play Again?</h3>
+        <h2>Play Again?</h2>
         <button
           id="modal-submit-btn"
           type="button"
