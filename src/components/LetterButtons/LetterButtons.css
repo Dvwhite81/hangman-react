@@ -2,17 +2,20 @@
   display: grid;
   gap: 1rem;
   grid-template-columns: repeat(13, 1fr);
+  height: 100%;
   justify-content: space-evenly;
-  margin: 0 auto;
+  margin: 5% auto;
   width: 90%;
 }
 
 .letter-button {
+  background-color: var(--light-color);
+  border-radius: 10px;
   cursor: pointer;
   font-size: x-large;
 }
 
 .letter-button:hover {
-  background-color: black;
-  color: lightgray;
+  background-color: var(--medium-color);
+  color: var(--lightest-color);
 }

@@ -1,3 +1,20 @@
-#word-container {
+#word-and-letters-container {
   display: flex;
+  flex-direction: column;
+  grid-column: 1 / 3;
+  grid-row: 2;
+}
+
+#word-container {
+  align-items: center;
+  display: flex;
+  font-size: xxx-large;
+  font-weight: bold;
+  gap: 1rem;
+  height: 100%;
+  justify-content: center;
+}
+
+.word-letter {
+  width: 2rem;
 }

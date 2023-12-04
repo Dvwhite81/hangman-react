@@ -1,23 +1,31 @@
 import Word from '../Word/Word';
 import LetterButtons from '../LetterButtons/LetterButtons';
-import './Hangman.css';
 import Guesses from '../Guesses/Guesses';
+import Canvas from '../Canvas/Canvas';
+import './Hangman.css';
 
 function Hangman({
-  correctWord,
   gameWord,
   rightGuesses,
   wrongGuesses,
   handleLetterClick,
 }) {
+  const alphabet = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
   return (
     <div id="hangman-container">
+      <Canvas />
       <Guesses
+        alphabet={alphabet}
         rightGuesses={rightGuesses}
         wrongGuesses={wrongGuesses}
       />
-      <Word correctWord={correctWord} gameWord={gameWord} />
-      <LetterButtons handleLetterClick={handleLetterClick} />
+      <div id="word-and-letters-container">
+        <Word gameWord={gameWord} />
+        <LetterButtons
+          alphabet={alphabet}
+          handleLetterClick={handleLetterClick}
+        />
+      </div>
     </div>
   );
 }

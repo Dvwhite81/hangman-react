@@ -4,7 +4,6 @@ import './Game.css';
 
 function Game({
   gameIsOver,
-  correctWord,
   gameWord,
   rightGuesses,
   wrongGuesses,
@@ -16,7 +15,6 @@ function Game({
     <div id="game-container">
       <Timer gameIsOver={gameIsOver} timeLeft={timeLeft} />
       <Hangman
-        correctWord={correctWord}
         gameWord={gameWord}
         rightGuesses={rightGuesses}
         wrongGuesses={wrongGuesses}

@@ -1,6 +1,6 @@
 import './Notification.css';
 
-function Notification({ gameIsOver, wonGame, gameWord }) {
+function Notification({ gameIsOver, wonGame, gameWord, resetGame }) {
   const display = gameIsOver ? 'flex' : 'none';
   const styles = { display: display };
   return (
@@ -15,7 +15,11 @@ function Notification({ gameIsOver, wonGame, gameWord }) {
           <h3>You Won!</h3>
         )}
         <h3>Play Again?</h3>
-        <button id="modal-submit-btn" type="button">
+        <button
+          id="modal-submit-btn"
+          type="button"
+          onClick={resetGame}
+        >
           Sure!
         </button>
       </div>

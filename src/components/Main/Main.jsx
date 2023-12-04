@@ -5,18 +5,14 @@ import Notification from '../Notification/Notification';
 import './Main.css';
 
 function Main() {
-  // Put this back to []
-  const [correctWord, setCorrectWord] = useState(['C', 'A', 'T']);
-  // Put this back to '_'
-  const [gameWord, setGameWord] = useState('___');
+  const [correctWord, setCorrectWord] = useState([]);
+  const [gameWord, setGameWord] = useState('_');
   const [rightGuesses, setRightGuesses] = useState([]);
   const [wrongGuesses, setWrongGuesses] = useState([]);
-  // Put this back to false
-  const [gameIsStarted, setGameIsStarted] = useState(true);
+  const [gameIsStarted, setGameIsStarted] = useState(false);
   const [gameIsOver, setGameIsOver] = useState(false);
   const [wonGame, setWonGame] = useState(false);
-  // Put this back to null
-  const [timeLeft, setTimeLeft] = useState(600);
+  const [timeLeft, setTimeLeft] = useState(60);
   const [timeUp, setTimeUp] = useState(false);
 
   const handleLetterClick = (letter) => {
@@ -52,6 +48,18 @@ function Main() {
 
   const wordIsGuessed = gameWord === correctWord.join('');
 
+  const resetGame = () => {
+    setCorrectWord([]);
+    setGameWord('_');
+    setRightGuesses([]);
+    setWrongGuesses([]);
+    setGameIsStarted(false);
+    setGameIsOver(false);
+    setWonGame(false);
+    setTimeLeft(60);
+    setTimeUp(false);
+  };
+
   useEffect(() => {
     if (timeLeft <= 0) {
       setTimeUp(true);
@@ -84,7 +92,6 @@ function Main() {
     <>
       <Game
         gameIsOver={gameIsOver}
-        correctWord={correctWord}
         gameWord={gameWord}
         rightGuesses={rightGuesses}
         wrongGuesses={wrongGuesses}
@@ -95,6 +102,7 @@ function Main() {
         gameIsOver={gameIsOver}
         wonGame={wonGame}
         gameWord={gameWord}
+        resetGame={resetGame}
       />
     </>
   );

@@ -1,8 +1,8 @@
 #hangman-container {
-  display: flex;
-  flex-direction: column;
-  font-size: xx-large;
-  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 50vw);
+  grid-template-rows: repeat(2, 45vh);
+  height: 90vh;
   justify-content: space-around;
   margin: auto;
   text-align: center;

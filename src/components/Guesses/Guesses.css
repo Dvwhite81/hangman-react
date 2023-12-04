@@ -1,0 +1,16 @@
+#guesses-container {
+  background-color: var(--light-color);
+  border-radius: 10px;
+  display: grid;
+  grid-column: 2;
+  grid-row: 1;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  height: 45vh;
+  margin: auto;
+  width: 90%;
+}
+
+.guesses-letter {
+  font-size: x-large;
+}

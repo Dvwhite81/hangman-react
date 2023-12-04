@@ -1,0 +1,15 @@
+#canvas {
+  display: flex;
+  grid-column: 1;
+  grid-row: 1;
+  height: 100%;
+  width: 100%;
+}
+
+#canvas-img {
+  background: url("../../assets//images/Hangman-bw.png") no-repeat;
+  background-size: contain;
+  height: 45vh;
+  margin: auto;
+  width: 45vh;
+}
