@@ -16,8 +16,15 @@ function Main() {
   const [timeLeft, setTimeLeft] = useState(60);
   const [timeUp, setTimeUp] = useState(false);
   const [isError, setIsError] = useState(false);
+  const [isEasyMode, setIsEasyMode] = useState(false);
 
   const handleLetterClick = (letter) => {
+    if (
+      rightGuesses.includes(letter) ||
+      wrongGuesses.includes(letter)
+    ) {
+      return;
+    }
     if (correctWord.includes(letter)) {
       setRightGuesses([...rightGuesses, letter]);
       updateWord(letter, correctWord);
@@ -51,7 +58,6 @@ function Main() {
   const wordIsGuessed = gameWord === correctWord.join('');
 
   const resetGame = () => {
-    console.log('resetGame');
     setCorrectWord([]);
     setGameWord('_');
     setRightGuesses([]);
@@ -81,7 +87,10 @@ function Main() {
     if (timeLeft <= 0) {
       setTimeUp(true);
     }
-    if (timeUp || wrongGuesses.length === 8) {
+    if (timeUp) {
+      setGameIsOver(true);
+    }
+    if (!isEasyMode && wrongGuesses.length === 8) {
       setGameIsOver(true);
     }
     if (wordIsGuessed) {
@@ -96,6 +105,7 @@ function Main() {
     gameWord,
     wordIsGuessed,
     wrongGuesses.length,
+    isEasyMode,
   ]);
 
   return !gameIsStarted ? (
@@ -103,6 +113,7 @@ function Main() {
       <Setup
         setWord={setWord}
         setTimeLeft={setTimeLeft}
+        setIsEasyMode={setIsEasyMode}
         setGameIsStarted={setGameIsStarted}
       />
       <Modal setOpen={isError} content={errorContent} />
@@ -116,6 +127,7 @@ function Main() {
         wrongGuesses={wrongGuesses}
         handleLetterClick={handleLetterClick}
         timeLeft={timeLeft}
+        isEasyMode={isEasyMode}
       />
       <Notification
         gameIsOver={gameIsOver}

@@ -1,8 +1,13 @@
 import './Canvas.css';
 
-function Canvas({ wrongGuesses }) {
+function Canvas({ isEasyMode, wrongGuesses }) {
   const errors = wrongGuesses.length;
-  const imgClass = `error-${errors}`;
+  let imgClass;
+  if (isEasyMode && errors > 7) {
+    imgClass = `error-easy`;
+  } else {
+    imgClass = `error-${errors}`;
+  }
 
   return (
     <div id="canvas">

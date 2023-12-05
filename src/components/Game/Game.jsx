@@ -9,6 +9,7 @@ function Game({
   wrongGuesses,
   handleLetterClick,
   timeLeft,
+  isEasyMode,
 }) {
   return (
     <div id="game-container">
@@ -18,6 +19,7 @@ function Game({
         rightGuesses={rightGuesses}
         wrongGuesses={wrongGuesses}
         handleLetterClick={handleLetterClick}
+        isEasyMode={isEasyMode}
       />
     </div>
   );

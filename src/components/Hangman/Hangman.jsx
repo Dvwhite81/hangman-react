@@ -9,11 +9,12 @@ function Hangman({
   rightGuesses,
   wrongGuesses,
   handleLetterClick,
+  isEasyMode,
 }) {
   const alphabet = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
   return (
     <div id="hangman-container">
-      <Canvas wrongGuesses={wrongGuesses} />
+      <Canvas isEasyMode={isEasyMode} wrongGuesses={wrongGuesses} />
       <Guesses
         alphabet={alphabet}
         rightGuesses={rightGuesses}

@@ -16,7 +16,7 @@
 }
 
 #number-input,
-#number-submit {
+.setup-btn {
   border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
@@ -25,7 +25,7 @@
   width: fit-content;
 }
 
-#number-submit:hover {
+.setup-btn:hover {
   background-color: black;
   color: white;
 }

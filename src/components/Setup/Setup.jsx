@@ -9,8 +9,14 @@ import {
 } from '../../assets/text/words';
 import './Setup.css';
 
-function Setup({ setWord, setTimeLeft, setGameIsStarted }) {
+function Setup({
+  setWord,
+  setTimeLeft,
+  setIsEasyMode,
+  setGameIsStarted,
+}) {
   const [length, setLength] = useState(null);
+  const [firstComplete, setFirstComplete] = useState(false);
 
   const getRandomWord = () => {
     let words;
@@ -40,36 +46,69 @@ function Setup({ setWord, setTimeLeft, setGameIsStarted }) {
     return words[random];
   };
 
-  const handleClick = () => {
-    console.log('handleClick length:', length);
+  const handleFirstClick = () => {
+    if (length === null) {
+      return;
+    }
     const word = getRandomWord(length);
-    console.log('handleClick word:', word);
     setWord(word);
+    setFirstComplete(true);
+  };
+
+  const handleSecondClick = (mode) => {
     const time = length * 60;
     setTimeLeft(time);
+    setIsEasyMode(mode);
     setGameIsStarted(true);
   };
 
   return (
     <div id="setup-container">
       <h1>Welcome to Hangman!</h1>
-      <h2>How many letters?</h2>
+      {!firstComplete ? (
+        <h2>How many letters?</h2>
+      ) : (
+        <h2>Easy or hard mode?</h2>
+      )}
       <div id="setup-input">
-        <input
-          id="number-input"
-          type="number"
-          min={3}
-          max={8}
-          onChange={(e) => setLength(Number(e.target.value))}
-        />
-        <button
-          id="number-submit"
-          className="btn"
-          type="submit"
-          onClick={handleClick}
-        >
-          Start
-        </button>
+        {!firstComplete ? (
+          <>
+            <input
+              id="number-input"
+              type="number"
+              min={3}
+              max={8}
+              onChange={(e) => setLength(Number(e.target.value))}
+            />
+            <button
+              id="number-submit"
+              className="setup-btn"
+              type="submit"
+              onClick={handleFirstClick}
+            >
+              Start
+            </button>
+          </>
+        ) : (
+          <>
+            <button
+              id="easy-mode"
+              className="setup-btn"
+              type="submit"
+              onClick={() => handleSecondClick(true)}
+            >
+              Easy
+            </button>
+            <button
+              id="hard-mode"
+              className="setup-btn"
+              type="submit"
+              onClick={() => handleSecondClick(false)}
+            >
+              Hard
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
