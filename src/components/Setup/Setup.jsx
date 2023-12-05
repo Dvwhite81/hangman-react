@@ -6,7 +6,7 @@ import {
   six,
   seven,
   eight,
-} from '../../assets/words/words';
+} from '../../assets/text/words';
 import './Setup.css';
 
 function Setup({ setWord, setTimeLeft, setGameIsStarted }) {
@@ -41,7 +41,9 @@ function Setup({ setWord, setTimeLeft, setGameIsStarted }) {
   };
 
   const handleClick = () => {
+    console.log('handleClick length:', length);
     const word = getRandomWord(length);
+    console.log('handleClick word:', word);
     setWord(word);
     const time = length * 60;
     setTimeLeft(time);

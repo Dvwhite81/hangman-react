@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Setup from '../Setup/Setup';
 import Game from '../Game/Game';
 import Notification from '../Notification/Notification';
+import Modal from '../Modal/Modal';
 import './Main.css';
 
 function Main() {
@@ -14,6 +15,7 @@ function Main() {
   const [wonGame, setWonGame] = useState(false);
   const [timeLeft, setTimeLeft] = useState(60);
   const [timeUp, setTimeUp] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const handleLetterClick = (letter) => {
     if (correctWord.includes(letter)) {
@@ -49,6 +51,7 @@ function Main() {
   const wordIsGuessed = gameWord === correctWord.join('');
 
   const resetGame = () => {
+    console.log('resetGame');
     setCorrectWord([]);
     setGameWord('_');
     setRightGuesses([]);
@@ -60,16 +63,28 @@ function Main() {
     setTimeUp(false);
   };
 
+  const errorContent = (
+    <div id="modal-content">
+      <h2>Please input a length!</h2>
+      <h3>3, 4, 5, 6, 7, or 8</h3>
+      <button
+        id="modal-submit-btn"
+        type="button"
+        onClick={() => setIsError(false)}
+      >
+        Okay!
+      </button>
+    </div>
+  );
+
   useEffect(() => {
     if (timeLeft <= 0) {
       setTimeUp(true);
     }
-    if (timeUp) {
-      console.log('Main useEffect timeup');
+    if (timeUp || wrongGuesses.length === 8) {
       setGameIsOver(true);
     }
     if (wordIsGuessed) {
-      console.log('WIN');
       setGameIsOver(true);
       setWonGame(true);
     }
@@ -80,14 +95,18 @@ function Main() {
     correctWord,
     gameWord,
     wordIsGuessed,
+    wrongGuesses.length,
   ]);
 
   return !gameIsStarted ? (
-    <Setup
-      setWord={setWord}
-      setTimeLeft={setTimeLeft}
-      setGameIsStarted={setGameIsStarted}
-    />
+    <>
+      <Setup
+        setWord={setWord}
+        setTimeLeft={setTimeLeft}
+        setGameIsStarted={setGameIsStarted}
+      />
+      <Modal setOpen={isError} content={errorContent} />
+    </>
   ) : (
     <>
       <Game
@@ -101,7 +120,7 @@ function Main() {
       <Notification
         gameIsOver={gameIsOver}
         wonGame={wonGame}
-        gameWord={gameWord}
+        correctWord={correctWord}
         resetGame={resetGame}
       />
     </>

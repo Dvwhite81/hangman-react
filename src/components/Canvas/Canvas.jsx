@@ -1,9 +1,12 @@
 import './Canvas.css';
 
-function Canvas() {
+function Canvas({ wrongGuesses }) {
+  const errors = wrongGuesses.length;
+  const imgClass = `error-${errors}`;
+
   return (
     <div id="canvas">
-      <div id="canvas-img" />
+      <div id="canvas-img" className={imgClass} />
     </div>
   );
 }

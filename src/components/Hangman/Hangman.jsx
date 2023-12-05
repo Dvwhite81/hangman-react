@@ -13,7 +13,7 @@ function Hangman({
   const alphabet = Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
   return (
     <div id="hangman-container">
-      <Canvas />
+      <Canvas wrongGuesses={wrongGuesses} />
       <Guesses
         alphabet={alphabet}
         rightGuesses={rightGuesses}

@@ -10,7 +10,6 @@ function Game({
   handleLetterClick,
   timeLeft,
 }) {
-  console.log('Game gameWord:', gameWord);
   return (
     <div id="game-container">
       <Timer gameIsOver={gameIsOver} timeLeft={timeLeft} />

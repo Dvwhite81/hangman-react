@@ -12,5 +12,6 @@
 }
 
 .guesses-letter {
+  color: var(--dark-color);
   font-size: x-large;
 }
